@@ -1,0 +1,4 @@
+name = "GrootSim"
+uuid = "84197a3c-ab72-42ed-a031-1046bb28d0ec"
+authors = ["alessiaantelmi <aless.antelmi@gmail.com>"]
+version = "0.1.0"
