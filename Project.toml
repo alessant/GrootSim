@@ -2,3 +2,11 @@ name = "GrootSim"
 uuid = "84197a3c-ab72-42ed-a031-1046bb28d0ec"
 authors = ["alessiaantelmi <aless.antelmi@gmail.com>"]
 version = "0.1.0"
+
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+DotEnv = "4dc1fcf4-5e3b-5448-94ab-0c38ec0385c1"
+PyPlot = "d330b81b-6aea-500a-939a-2ce795aea3ee"
+SimpleHypergraphs = "aa4a32ff-dd5d-5357-90e3-e7a9512f0501"

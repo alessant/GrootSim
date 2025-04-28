@@ -1,1 +1,2 @@
 # GrootSim
+This repository contains the code to reproduce the experiments described in the article "Modeling the Impact of Group Interactions on Climate-related Opinion Change in Reddit", A.Antelmi, C. Spagnuolo, and L. M. Aiello.
