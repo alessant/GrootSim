@@ -4,3 +4,6 @@ Manifest.toml
 .env
 
 data/*
+results/*
+
+tmp*
