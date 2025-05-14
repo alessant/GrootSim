@@ -62,3 +62,25 @@ function _get_score!(user_opinions, event_data)
         Pair(created_at, sub_score)
     )
 end
+
+
+# *
+# *
+# *
+function _binning_opinions(
+    opinions::Union{Vector{Float64}, Vector{Union{Float64, Nothing}}}, 
+    thrs::Vector{Float64}
+)
+    to_return = Vector{Union{Int, Nothing}}()
+
+    for op in opinions
+        # we ignore thrs opinions (we should not ignore them)
+        if isnothing(op) # || op in thrs
+            push!(to_return, nothing)
+        else
+            push!(to_return, findfirst(x -> x > op, thrs)-1)
+        end
+    end
+
+    return to_return
+end
