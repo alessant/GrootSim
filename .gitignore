@@ -2,6 +2,9 @@ Manifest.toml
 
 .DS_Store
 .env
+.python-version
+pyproject.toml
+
 
 data/*
 results/*

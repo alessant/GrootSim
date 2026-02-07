@@ -3,9 +3,30 @@ module GrootSim
 using ArgParse
 using CSV 
 using DataFrames
+using DataStructures
 using Dates
+using DotEnv
+DotEnv.load!()
+using Serialization
 using SimpleHypergraphs
 using Statistics
+
+using PyCall
+
+const pickle = PyNULL()
+
+function __init__()
+    has_pickle = false
+    try
+        copy!(pickle, pyimport("pickle"))
+        has_pickle = true
+    catch e; end
+    if !has_pickle
+        @warn "The pickling functionality will not work!\n"* 
+        "To test your installation try running `using PyCall;pyimport(\"pickle\")`"
+    end
+end
+
 
 # *
 # * model-related code
@@ -95,5 +116,35 @@ include("utils/conv_stats_utils.jl")
 # *
 export parse_commandline, parse_config
 include("experiments/utils/parse_command_line.jl")
+
+# *
+# * evaluation-related code
+# *
+export find_first_drift, count_drifts, check_final_stance
+include("evaluation/hand_crafted_metrics.jl")
+
+export eval_first_drift, eval_first_drift_all
+export eval_n_drifts
+export eval_final_stance
+export count_drifters
+include("evaluation/evaluator.jl")
+
+# utils for loading data and results
+export _load_params, _load_sim_results_generalized
+export _loading_data
+include("experiments/evaluation/utils/loader.jl")
+
+# utils for writing results
+export write_first_drift_results, write_first_drift_results_all
+export write_n_drifts_results
+export write_last_stance_results
+export write_count_users_results
+include("experiments/evaluation/utils/writer.jl")
+
+# utils for analyzing evaluation results
+export get_metrics_data, get_metrics_data_direction
+export get_first_drit_data_direction
+export get_last_stance_data
+include("experiments/evaluation/utils/helper.jl")
 
 end # module GrootSim
